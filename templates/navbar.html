@@ -1,0 +1,12 @@
+{% load static %}
+
+<header>
+    <a href="{% url 'jogo:homepage' %}" class="logo hover-button"><img src="{% static 'images/logo.png' %}"></a>
+    <i class="bx bx-menu" id="menu-icon"></i>
+    <nav class="navigation navegation-pages">
+        <a class="{% if active_page == 'homepage' %} active {% endif %}" href="{% url 'jogo:homepage' %}">Inicio<span></span></a>
+        <a class="{% if active_page == 'jogos' %} active {% endif %}" href="{% url 'jogo:games' %}">Jogos<span></span></a>
+        <a href="{% url 'jogo:shopping' %}" class="carrinho"><i class='bx bx-cart'></i>{{ carrinho }}x</a>
+    </nav>
+
+</header>

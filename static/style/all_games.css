@@ -1,0 +1,91 @@
+.games_list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 75vh;
+    background: #1c1c1c;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.card-games {
+    position: relative;
+    width: 230px;
+    height: 410px;
+    margin-top: 20px;
+    margin-bottom: 18px;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-right: 50px;
+    transition: .5s ease-in-out;
+  }
+  
+  
+  
+  .texto-popular {
+    position: absolute;
+    top: 103%;
+  }
+  
+  .games_list h2 {
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+
+.texto-adicionados {
+    position: absolute;
+    top: 180%;
+}
+
+.texto-adicionados h2 {
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+
+  
+  
+  
+  
+  
+  .card-games .cartao_jogo::before {
+    content: '';
+    position: absolute;
+    bottom: -200px;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, #474747 50%, transparent);
+    transition: 0.5s;
+    z-index: 1;
+  }
+
+
+  
+  
+  .card-games .cartao_jogo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        position: absolute;
+  }
+  
+  .card-games:hover {
+    transform: scale(0.9);
+    transition-delay: 0.1s
+  }
+  
+  
+  .card-games .details {
+    position: absolute;
+  }
+  
+  
+  .card-games .details h1 {
+    color: purple;
+    font-weight: 600;
+  }
+  
+  

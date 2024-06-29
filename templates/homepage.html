@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block body %}
+<section id="header">
+    <img src="{% static 'images/cod.jpg' %}" alt="">
+    <div class="overlay">
+        <div class="caption">
+            <h2>Loja de jogos</h2>
+            <h6><span>Adquira já seu jogo aqui</span></h6>
+        </div>
+    </div>
+</section>
+
+
+<section class="games_list">
+    <h2 class="text-gray-200 text-2xl font-medium texto-popular">
+        Mais Populares
+    </h2>
+    {% for games in lista_jogos_acessados  %}
+    <a href="{% url 'jogo:shop' games.id %}">
+    {% if forloop.counter < 7 %}
+    <div class="card animate-card">
+        <div class="cartao_jogo">
+            <img src="{{ games.cartao_imagem.url }}" alt="">
+        </div>
+        </a>
+        <div class="details">
+            <h1></h1>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</section>
+
+<section class="games_list">
+    <h2 class="text-gray-200 text-2xl font-medium texto-adicionados">
+        Adicionado recente
+    </h2>
+    {% for game in lista_jogos_adicionados_recentes %}
+    <a href="{% url 'jogo:shop' game.id %}">
+        {% if forloop.counter < 7 %}
+                <div class="card animate-card">
+                    <div class="cartao_jogo">
+                        <img src="{{ game.cartao_imagem.url }}" alt="">
+                    </div>
+                    </a>
+                    <div class="details">
+                    </div>
+                </div>
+        {% endif %}
+    {% endfor %}
+</section>
+
+      
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
