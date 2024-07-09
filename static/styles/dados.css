@@ -1,6 +1,6 @@
 .section-dados {
     background-color: #343434;
-    min-height: 100vh;
+    min-height: 120vh;
     display: flex;
     justify-content: center;
 }
