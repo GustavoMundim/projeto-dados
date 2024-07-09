@@ -1,6 +1,3 @@
-INSTRUÇÃO
-
-
 Criação do Usuário Administrador:
 
 Inicialmente, é fundamental criar um usuário administrador.
@@ -8,35 +5,17 @@ Para isso, utilize o terminal e execute o seguinte comando:
 
 Copiar código
 python manage.py createsuperuser
-ou python3 manage.py createsuperuser
 
-<<<<<<< HEAD
-=======
-Siga as instruções fornecidas para concluir a criação do super usuário.
-
->>>>>>> a15edbcd7ec8654c0f5c14515be35eaade1ae965
 vamos também migrar todos dados adicionais para o site utilize:
 
 Copiar Código
 
 python manage.py makemigrations
-<<<<<<< HEAD
 
 depois
 
 python manage.py migrate
 
-=======
-ou
-python3 manage.py makemigrations
-
-
-depois
-
-python3 manage.py migrate
-ou
-python manage.py migrate
->>>>>>> a15edbcd7ec8654c0f5c14515be35eaade1ae965
 
 Siga as instruções fornecidas para concluir a criação do super usuário.
 
@@ -51,9 +30,5 @@ Após criar a conta, acesse a área administrativa (/admin) do sistema.
 Dentro desta área, adicione as permissões administrativas ao usuário em questão.
 Com as permissões concedidas, o usuário será capaz de gerenciar as anotações conforme necessário.
 
-<<<<<<< HEAD
-=======
-
->>>>>>> a15edbcd7ec8654c0f5c14515be35eaade1ae965
 
 
