@@ -52,8 +52,14 @@ Dentro desta área, adicione as permissões administrativas ao usuário em quest
 Com as permissões concedidas, o usuário será capaz de gerenciar as anotações conforme necessário.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> a15edbcd7ec8654c0f5c14515be35eaade1ae965
+=======
+APÓS fazer todo esses passos utilize no terminal
+
+python manage.py runserver
+>>>>>>> 6f39b4e88384ce864b410eb0431cc8ed59d01491
 
 
