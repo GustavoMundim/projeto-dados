@@ -26,9 +26,14 @@ Após a criação do super usuário, é necessário atribuir-lhe funções admin
 Primeiramente, crie uma conta na página designada para este fim.
 Configuração de Permissões Administrativas:
 
+
+
+
 Após criar a conta, acesse a área administrativa (/admin) do sistema.
 Dentro desta área, adicione as permissões administrativas ao usuário em questão.
 Com as permissões concedidas, o usuário será capaz de gerenciar as anotações conforme necessário.
 
+Feito isso utilize o comando:
 
+python manage.py runserver
 
