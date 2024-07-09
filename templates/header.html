@@ -5,6 +5,9 @@
         <ul class="first-ul">
             {% if user.is_authenticated %}
                 <li>
+                    <a href="{% url 'projeto:grafico' 1 %}">Graficos <i class='bx bxs-objects-vertical-bottom'></i></a>
+                </li>
+                <li>
                     <a href="{% url 'projeto:home' %}">Dados Financeiros<i class='bx bxs-objects-vertical-bottom'></i></a>
                 </li>
                 <li class="submenu">
@@ -16,6 +19,7 @@
                 </li>
             {% else %}
             <li>
+                <a href="{% url 'projeto:grafico' 1 %}">Graficos <i class='bx bxs-objects-vertical-bottom'></i></a>
                 <a href="{% url 'projeto:home' %}">Dados Financeiros <i class='bx bxs-objects-vertical-bottom'></i></a>
                 <a href="{% url 'projeto:login' %}"><i class='bx bxs-user'></i>Entrar/Registrar</a>
             </li>
