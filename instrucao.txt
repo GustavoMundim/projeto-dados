@@ -10,6 +10,8 @@ Copiar código
 python manage.py createsuperuser
 ou python3 manage.py createsuperuser
 
+Siga as instruções fornecidas para concluir a criação do super usuário.
+
 vamos também migrar todos dados adicionais para o site utilize:
 
 Copiar Código
