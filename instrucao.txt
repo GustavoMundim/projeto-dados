@@ -40,6 +40,8 @@ Após criar a conta, acesse a área administrativa (/admin) do sistema.
 Dentro desta área, adicione as permissões administrativas ao usuário em questão.
 Com as permissões concedidas, o usuário será capaz de gerenciar as anotações conforme necessário.
 
+APÓS fazer todo esses passos utilize no terminal
 
+python manage.py runserver
 
 
