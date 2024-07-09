@@ -1,0 +1,23 @@
+ <div class="comentarios-usuarios">
+                    <div class="card-comentario-usuario">
+                        <div class="card-info-user">
+                            <div class="card-info-username-comentario">
+                               <h3>@{{user.username}}</h3>
+                            </div>
+                            <div class="card-info-username-deletar-comentario">
+                                <h3>Ico Trash</h3>
+                            </div>
+                        </div>
+                        <div class="card-full-container">
+                            <div class="div-card-image">
+                                <div class="card-image-comentario-user">
+                                    <img src="{% static 'assets/user_card.png' %}" alt="foto-usuario-comentario">
+                                </div>
+                            </div> 
+                            <div class="comentario-usuario-full">
+                                <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae maiores amet tempore illum quos voluptas deserunt beatae?</h3>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>

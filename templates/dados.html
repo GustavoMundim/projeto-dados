@@ -1,0 +1,65 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load custom_tags %}
+{% block body %}
+
+
+
+
+<div class="section-dados">
+    <div class="container-dados">
+        <!--  INICIANDO O  LOOP FOR -->
+        {% for empresa, dados in estruturas.items %}
+            <div class="card-dados" id="{{id}}">
+                <div class="imagem-empresa">
+                    <div class="data_dados"><p>{{dados.Data}}</p></div>
+                    <a href="{% url 'projeto:grafico' forloop.counter %}"><img src="{% static 'assets/logo.png' %}" /></a>
+                </div>
+                <div class="show-ativo">
+                    <a href="{% url 'projeto:grafico' forloop.counter %}"><h2 class="painel">{{empresa}}</h2></a>
+                </div>
+                <div class="dados-descricao">
+                    <div class="dados-descricao-description">
+                        <div class="dados_descricao_customize">
+                            <h3>Abertura:</h3>
+                            <span>{{ dados.Abertura }}</span>
+                        </div>
+                            <div class="dados-descricao-customize">
+                                <h3>Alta:</h3>
+                                <span>{{ dados.Alta }}</span>
+                            </div>
+                    </div>
+                    <div class="dados-descricao-description">
+                        <div class="dados_descricao_customize">
+                            <h3>Baixa:</h3>
+                            <span>{{ dados.Baixa }}</span>
+                    </div>
+                    <div class="dados-descricao-customize">
+                        <h3>Fechamento:</h3>
+                        <span>{{ dados.Fechamento }}</span>
+                    </div>
+                    </div>   
+                </div>
+                <div class="dados-anotatacao">
+                    <!--  CADERNO ANOTACAO -->
+                    {% include 'consulta_anotacoes.html' %}
+                    <!--  CADERNO ANOTACAO -->
+                </div>
+            </div>
+            {% endfor %}
+        <!--  TERMINANDO O LOOP -->
+    </div> 
+</div>
+
+<script>
+
+    function PegarID(elemento){
+        event.preventDefault();
+        var id_card = elemento.id;
+        console.log(id_card)
+    }
+
+</script>
+
+
+{% endblock %}

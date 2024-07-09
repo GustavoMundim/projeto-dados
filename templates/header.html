@@ -1,0 +1,25 @@
+{% load static %}
+
+<header>
+    <nav class="navbar">
+        <ul class="first-ul">
+            {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'projeto:home' %}">Dados Financeiros<i class='bx bxs-objects-vertical-bottom'></i></a>
+                </li>
+                <li class="submenu">
+                    <a href="{% url 'projeto:usuario' %}"><i class='bx bx-user-circle' ></i><span class="user-settings">{{user.username}}</span></a>
+                        <li>
+                            <a href="{% url 'projeto:logout' %}"></i>Sair<i class='bx bxs-door-open'></i></a>
+                        </li>
+                    </ul>
+                </li>
+            {% else %}
+            <li>
+                <a href="{% url 'projeto:home' %}">Dados Financeiros <i class='bx bxs-objects-vertical-bottom'></i></a>
+                <a href="{% url 'projeto:login' %}"><i class='bx bxs-user'></i>Entrar/Registrar</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>

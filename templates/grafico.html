@@ -1,0 +1,119 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<div class="section-grafico">
+    <div class="container-grafico">
+        <div class="div-grafico-text">
+            <div class="text-grafico">
+                <h2>Ativo</h2>
+            </div>
+        </div>
+        <div class="container-buttons">
+            {% for empresa in estrutura %}
+            <a href="{% url 'projeto:grafico' forloop.counter %}" name="atributo"   data-empresa="{{ estrutura }}"><button>{{ empresa }}</button></a>
+            {% endfor %}
+        </div>
+        <div class="container-buttons-2">
+            {% for coluna in dados_ativos %}
+            <button data-coluna="{{coluna}}" class="btn-coluna">{{ coluna }}</button>
+            {% endfor %}  
+        </div>
+        <div class="data-get">
+            <p class="oculto"
+               data-dados-empresa= "{{ dados_filtrados.Empresa}}"
+               data-dados-data="{{ dados_filtrados.Data|join:' ' }}"
+               data-dados-abertura="{{ dados_filtrados.Aberturas|join:' ' }}"
+               data-dados-alta="{{ dados_filtrados.Altas|join:' ' }}"
+               data-dados-baixa="{{ dados_filtrados.Baixas|join:' ' }}"
+               data-dados-fechamento="{{ dados_filtrados.Fechamento|join:' ' }}">
+            </p>
+        </div>
+        <div class="chart-container">
+            <canvas id="line-chart"></canvas>
+        </div>
+        <div class="container-comentarios">
+            <div class="container-card-comentarios">
+                {% if user.is_staff %}
+                <div class="full-container">
+                    <form action="{% url 'projeto:note' id_anotacao %}" method="POST" class="form-anotacao">
+                    {% csrf_token %}
+                    <textarea placeholder="Digite aqui sua anotação..." name="anotacao-usuario-grafico"></textarea>
+                    <button id="btn-escrever-anotacao" class=" btn-notepad">Escrever Anotação</button>
+                    </form>
+                </div>
+                <div class="comentarios-usuarios">
+                    <!--  INICIO CARD  -->
+                    {% for anotacao_usuario in anotacao %}
+                    <div class="card-comentarios-do-usuario">
+                        <div class="full-container-comentario-card">
+                            <div class="full-name-user">
+                                <h3>@{{anotacao_usuario.usuario}}</h3>
+                            </div>
+                            <div class="div-mean">
+                                <form method="POST" action="{% url 'projeto:delete' anotacao_usuario.id %}">
+                                {% csrf_token %}
+                                <button><i class='bx bx-trash'></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="container-comentarios-user">
+                            <div class="container-imagem-usuario">
+                                <div class="card-imagem-comentario-usuario">
+                                    <img src="{% static 'assets/user_card.png' %}" alt="">
+                                </div>
+                            </div>
+                        <div class="comentario-full-container">
+                            <div class="comentario-user-cont">
+                                <h3>{{ anotacao_usuario.anotacao }}</h3>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="comentarios-usuarios-full">
+                    <!--  INICIO CARD  -->
+                    {% for anotacao_usuario in anotacao %}
+                    <div class="card-comentarios-do-usuario">
+                        <div class="full-container-comentario-card">
+                            <div class="full-name-user">
+                                <h3>@{{anotacao_usuario.usuario}}</h3>
+                            </div>
+                            <div class="div-mean">
+                                <!-- <form method="POST" action="{% url 'projeto:delete' anotacao_usuario.id %}">
+                                {% csrf_token %}
+                                <button><i class='bx bx-trash'></i></button>
+                                </form> -->
+                            </div>
+                        </div>
+                        <div class="container-comentarios-user">
+                            <div class="container-imagem-usuario">
+                                <div class="card-imagem-comentario-usuario">
+                                    <img src="{% static 'assets/user_card.png' %}" alt="">
+                                </div>
+                            </div>
+                        <div class="comentario-full-container">
+                            <div class="comentario-user-cont">
+                                <h3>{{ anotacao_usuario.anotacao }}</h3>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 
+<div class="div-card-image">
+    <div class="card-image-comentario-user">
+        <img src="{% static 'assets/user_card.png' %}" alt="foto-usuario-comentario">
+    </div>
+</div> -->
+
+{% load static %}
+
+{% endblock %}

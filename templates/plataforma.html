@@ -1,0 +1,59 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<section class="secao-plataforma">
+    <div class="info-usuario">
+        <div class="foto-usuario">
+            <div class="card-foto">
+                {% if user.foto_usuario %}
+                    <img src="{{user.foto_usuario.url}}" alt="">
+                {% else %}
+                    <img src="{% static 'assets/user.png' %}">
+                {% endif %}
+            </div>
+        </div>
+        <div class="ver-informacoes-usuario">
+           <div class="informacao-usuario">
+            <div class="info-container">
+                <h3>Usuário</h3>
+                <div class="card-info">
+                    <h3>{{user.username}}</h3>
+                </div>
+            </div>
+            <div class="info-container">
+                <h3>E-mail</h3>
+                <div class="card-info">
+                    {% if user.email %}
+                    <h3>{{user.email}}</h3>
+                    {% else %}
+                    <h3>user@gmail.coms</h3>
+                    {% endif %}
+                </div>
+            </div>
+           </div>
+           <div class="informacao-usuario">
+            <div class="info-container">
+                <h3>Password</h3>
+                <div class="card-info">
+                    <h3>********</h3>
+                </div>
+            </div>
+            <div class="info-container">
+                <h3>Nivel</h3>
+                {% if user.is_staff %}
+                    <div class="card-info">
+                        <h3><span class="role">Administrador</span></h3>
+                {% else %}
+                <div class="card-info">
+                    <h3>{{ user.nivel }}</h3>
+                {% endif %}
+                </div>
+            </div>
+           </div>
+        </div>
+    </div>
+    <div class="wallpaper">
+        <div class="overlay"></div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,67 @@
+.section-login {
+    width: 100%;
+    min-height: 42vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.container-login {
+    width: 80%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 8px;
+
+    & input {
+        width: 100%;
+        padding: 1.1rem;
+        text-align: center;
+    }
+
+    & h2 {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        text-align: center;
+        font-weight: 500;
+    }
+}
+
+
+.form {
+    width: 40%;
+}
+
+.container-messages {
+    width: 50%;
+    text-align: center;
+}
+
+.buttons {
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+
+    a, button {
+        width: 100%;
+        background: black;
+        text-align: center;
+        padding: 0.9rem;
+        color: white;
+        transition: all 0.5s ease;
+        border: 3px solid #fff;
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(0.9)
+        }
+    }
+}
