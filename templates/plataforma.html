@@ -3,13 +3,20 @@
 {% block body %}
 <section class="secao-plataforma">
     <div class="info-usuario">
+        {% if not alterar_imagem %}
         <div class="foto-usuario">
             <div class="card-foto">
                 {% if user.foto_usuario %}
-                    <img src="{{user.foto_usuario.url}}" alt="">
+                    <img src="{{user.foto_usuario.url}}" alt="imagem-usuario">
                 {% else %}
                     <img src="{% static 'assets/user.png' %}">
                 {% endif %}
+                <div class="edit-image">
+                    <form method="POST" action="">
+                    {% csrf_token %}
+                    <button type="submit"><i class='bx bxs-camera'></i></button>
+                </form>
+                </div>
             </div>
         </div>
         <div class="ver-informacoes-usuario">
@@ -51,6 +58,34 @@
             </div>
            </div>
         </div>
+        {% else %}
+        <div class="container-alterar-imagem">
+                <div class="retornar">
+                    <a href="{% url 'projeto:back' %}"><i class='bx bx-left-arrow-alt'></i></a>
+                </div>
+                <div class="container-card-foto-alterar-imagem">
+                    <div class="card-image-alterar">
+                        {% if user.foto_usuario %}
+                        <img src="{{user.foto_usuario.url}}" alt="image-usuario" class="imagem_do_usuario_define">
+                        {% else %}
+                        <img src="{% static 'assets/user.png' %}" alt="image-usuario" class="imagem_do_usuario_define">
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="container-ficheiro">
+                    <form method="POST" action="{% url 'projeto:alterar' %}" class="form-style" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="ficheiro">
+                        <input type="file" id="imagem_alterada_usuario" name="imagem_alterada_usuario" class="alt-image" img="alt_usuario">
+                    </div>
+                        <div class="button-upload-image">
+                            <button type="submit">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+        {% endif %}
     </div>
     <div class="wallpaper">
         <div class="overlay"></div>

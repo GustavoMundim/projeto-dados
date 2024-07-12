@@ -1,7 +1,8 @@
 # Importações necessárias do Django e outras bibliotecas
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, View
 from django.http import HttpRequest, HttpResponse
+from django.utils.decorators import method_decorator
 from .api_yahoo import yahoo_finance_api  # Importa função de API externa
 from django.urls import reverse
 from django.contrib import auth
@@ -199,9 +200,13 @@ def anotacao_do_usuario(request, counter):
 
 
 def deletar_anotacao(request, comentario_id):
-    pegar_anotacao = get_object_or_404(CriarAnotacao, id=comentario_id)
-    pegar_anotacao.delete()
-    return redirect('projeto:home')
+    try:
+        pegar_anotacao = get_object_or_404(CriarAnotacao, id=comentario_id)
+        pegar_anotacao.delete()
+        return redirect('projeto:home')
+    except:
+        return redirect('projeto:home')
+
 
 
 
@@ -211,6 +216,53 @@ def logout(request):
 
 
 
-@login_required(login_url='projeto:login')
-def plataforma(request):
-    return render(request, 'plataforma.html')
+@method_decorator(login_required(login_url='projeto:login'), name='dispatch')
+class PlataformaUsuario(TemplateView):
+    template_name = 'plataforma.html'
+
+    def get(self, request, **kwargs):
+        context = self.get_context_data(**kwargs)
+        #  VERIFICAR SE EXISTE UMA SESSION
+        if 'alterar_imagem' in request.session:
+            context['alterar_imagem'] = request.session['alterar_imagem']
+        return self.render_to_response(context)
+    
+    def post(self, request, **kwargs):
+        request.session['alterar_imagem'] = True
+        return redirect('projeto:usuario')
+
+
+
+class AlterarImagem(View):
+    pass
+
+
+    def get(self, request, **kwargs):
+        context = self.get_context_data(**kwargs)
+        return self.render_to_response(context)
+    
+    def post(self, request, **kwargs):
+        request.session['alterar_imagem'] = False
+        usuario = request.user
+        try:
+            usuario.foto_usuario = request.FILES['imagem_alterada_usuario']
+            usuario.save()
+            return redirect('projeto:usuario')
+        except:
+            return redirect('projeto:usuario')
+
+
+
+
+            
+
+
+
+def back_plataforma(request):
+    if 'alterar_imagem' in request.session:
+        del request.session['alterar_imagem']
+    return redirect('projeto:usuario')
+
+    # return render(request, 'plataforma.html')
+
+
